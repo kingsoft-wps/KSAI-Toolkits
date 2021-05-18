@@ -1,0 +1,39 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+macro(source_group_by_dir source_files)
+  if(MSVC)
+	set(sgbd_cur_dir ${CMAKE_CURRENT_SOURCE_DIR})
+	foreach(sgbd_file ${${source_files}})
+	  string(REGEX REPLACE ${sgbd_cur_dir}/\(.*\) \\1 sgbd_fpath ${sgbd_file})
+	  string(REGEX REPLACE "\(.*\)/.*" \\1 sgbd_group_name ${sgbd_fpath})
+	  string(COMPARE EQUAL ${sgbd_fpath} ${sgbd_group_name} sgbd_nogroup)
+	  string(REPLACE "/" "\\" sgbd_group_name ${sgbd_group_name})
+	  if(sgbd_nogroup)
+	    set(sgbd_group_name "\\")
+	  endif(sgbd_nogroup)
+	  source_group(${sgbd_group_name} FILES ${sgbd_file})
+	endforeach(sgbd_file)
+  endif(MSVC)
+endmacro(source_group_by_dir)
+
+PROJECT(KSAI-Toolkits)
+MESSAGE(STATUS "Project Directory: ${PROJECT_SOURCE_DIR}")
+
+option(BUILD_TARGET_LINUX "Set the build target is Linux" OFF)
+option(BUILD_TARGET_WINDOWS "Set the build target is Windows" OFF)
+option(BUILD_TARGET_ARM "Set the build target is Arm" OFF)
+add_compile_options(-std=c++11)
+
+option(WITH_OCR "enable OCR module" ON)
+option(WITH_TEST "enable test" ON)
+
+SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
+SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
+SET(INCLUDE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/include)
+SET(PROJECT_SOURCE_PATH ${PROJECT_SOURCE_DIR})
+
+ADD_SUBDIRECTORY(src)
+
+if(WITH_TEST)
+  ADD_SUBDIRECTORY(test)
+endif()
+
