@@ -43,14 +43,14 @@ public:
 template <typename T> class OCRect {
 public:
   OCRect() {}
-  OCRect(std::vector<MPoint<T>> &p) {
+  OCRect(const std::vector<MPoint<T>> &p) {
     assert(p.size() == 4);
     points_[0] = p[0];
     points_[1] = p[1];
     points_[2] = p[2];
     points_[3] = p[3];
   }
-  OCRect(std::vector<MPoint<T>> &&p) {
+  OCRect(const std::vector<MPoint<T>> &&p) {
     assert(p.size() == 4);
     points_[0] = p[0];
     points_[1] = p[1];
@@ -63,7 +63,7 @@ public:
     points_[2] = r.points_[2];
     points_[3] = r.points_[3];
   }
-  OCRect(OCRect<T> &&r) {
+  OCRect(const OCRect<T> &&r) {
     points_[0] = r.points_[0];
     points_[1] = r.points_[1];
     points_[2] = r.points_[2];

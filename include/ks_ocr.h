@@ -29,9 +29,9 @@ class EXPORT_API KSAIOCR {
 public:
   KSAIOCR();
   ~KSAIOCR();
-  bool Init(const std::string detect_model_path, const std::string cls_model_path,
-            const std::string recog_model_path, const std::string dict_path);
-  bool Process(const cv::Mat &img, KSAIResults& results);
+  bool Init(const std::string &detect_model_path, const std::string &cls_model_path,
+            const std::string &recog_model_path, const std::string &dict_path);
+  bool Process(const cv::Mat &img, KSAIResults &results);
 private:
   KSAIOCRDetector* detector_;
   KSAIOCRAngleClassifier* angleClassifier_;

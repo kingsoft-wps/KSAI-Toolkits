@@ -25,7 +25,7 @@ namespace KSAILoaderOp{
     return image;
   }
 
-  cv::Mat LoadImageFromBuffer(char *buffer, int width, int height, int channels) {
+  cv::Mat LoadImageFromBuffer(const char* buffer, const int &width, const int &height, const int &channels) {
     if (!buffer) {
       return cv::Mat();
     }
@@ -35,7 +35,7 @@ namespace KSAILoaderOp{
     if (channels != 4) {
       return cv::Mat();
     }
-    cv::Mat input(height, width, CV_8UC4, buffer);
+    cv::Mat input(height, width, CV_8UC4, const_cast<char*>(buffer));
     if (input.empty()) {
       return cv::Mat();
     }

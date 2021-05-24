@@ -19,5 +19,5 @@ limitations under the License.
 
 namespace KSAILoaderOp {
   cv::Mat LoadImageFromFile(const std::string &file_path);
-  cv::Mat LoadImageFromBuffer(char *buffer, int width, int height, int channels);
+  cv::Mat LoadImageFromBuffer(const char* buffer, const int &width, const int &height, const int &channels);
 };

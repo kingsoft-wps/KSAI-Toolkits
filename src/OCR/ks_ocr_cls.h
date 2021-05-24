@@ -21,5 +21,5 @@ class KSAIOCRAngleClassifier : public KSAIInferenceBase{
 public:
   KSAIOCRAngleClassifier() = default;
   virtual ~KSAIOCRAngleClassifier() = default;
-  bool Process(const cv::Mat& in_img, cv::Mat& out_img);
+  bool Process(const cv::Mat &in_img, cv::Mat &out_img);
 };

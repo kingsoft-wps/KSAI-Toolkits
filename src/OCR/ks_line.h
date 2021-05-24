@@ -21,7 +21,7 @@ limitations under the License.
 #include "ks_data_type.h"
 class Line {
 public:
-  Line(OCRectf &rect, std::vector<int> &label, std::string &result) {
+  Line(const OCRectf &rect, const std::vector<int> &label, const std::string &result) {
     label_ = label;
     chars_ = result;
     coord_ = rect;
@@ -55,7 +55,7 @@ public:
     return coord_ == other.coord_ && !chars_.compare(other.chars_);
   }
 
-  float Distance(OCRectf &other) {
+  float Distance(const OCRectf &other) {
     return static_cast<float>(std::sqrt(std::pow((coord_.points_[2].x_ - other.points_[0].x_), 2) +
                               std::pow((coord_.points_[2].y_ - other.points_[0].y_), 2)));
   }
@@ -100,7 +100,7 @@ public:
     return true;
   }
 
-  Line FindNearest(std::list<Line> &others) {
+  Line FindNearest(const std::list<Line> &others) {
     Line ret = others.front();
     float nearest = 1e9;
     for (auto other = others.begin(); other != others.end(); other++) {

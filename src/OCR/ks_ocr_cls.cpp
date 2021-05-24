@@ -18,7 +18,7 @@ limitations under the License.
 
 #include "base/ks_common_op.h"
 
-bool KSAIOCRAngleClassifier::Process(const cv::Mat& in_img, cv::Mat& out_img) {
+bool KSAIOCRAngleClassifier::Process(const cv::Mat &in_img, cv::Mat &out_img) {
   cv::Mat mid_img;
   const int fixed_height = 32;
   KSAICommonOP::ResizeImageKeepRatio(in_img, mid_img, fixed_height);

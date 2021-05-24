@@ -22,5 +22,5 @@ class KSAIOCRDetector : public KSAIInferenceBase{
  public:
   KSAIOCRDetector() = default;
   virtual ~KSAIOCRDetector() = default;
-  bool Process(const cv::Mat& img, VOCRectf &rects);
+  bool Process(const cv::Mat &img, VOCRectf &rects);
 };

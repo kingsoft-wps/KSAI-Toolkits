@@ -40,10 +40,10 @@ KSAIOCR::~KSAIOCR() {
   }
 }
 
-bool KSAIOCR::Init(const std::string detect_model_path,
-                   const std::string cls_model_path,
-                   const std::string recog_model_path,
-                   const std::string dict_path) {
+bool KSAIOCR::Init(const std::string &detect_model_path,
+                   const std::string &cls_model_path,
+                   const std::string &recog_model_path,
+                   const std::string &dict_path) {
   if (detector_ == nullptr) {
     detector_ = new KSAIOCRDetector();
   }
@@ -63,7 +63,7 @@ bool KSAIOCR::Init(const std::string detect_model_path,
   }
 }
 
-bool KSAIOCR::Process(const cv::Mat& img, KSAIResults& results) {
+bool KSAIOCR::Process(const cv::Mat &img, KSAIResults &results) {
   int ret = true;
   VOCRectf rects;
   ret = detector_->Process(img, rects);

@@ -47,8 +47,8 @@ bool CreateDict(const std::string &dict_path,
   return true;
 }
 
-void MergeHorizontal(VOCRectf &rects, std::vector<std::vector<int>> &labels,
-                     std::vector<std::string> &results,
+void MergeHorizontal(const VOCRectf &rects, const std::vector<std::vector<int>> &labels,
+                     const std::vector<std::string> &results,
                      std::vector<std::vector<int>> &duanluo_results_labels,
                      std::vector<std::string> &merged_results) {
   std::list<Line> result;
@@ -98,7 +98,7 @@ void MergeHorizontal(VOCRectf &rects, std::vector<std::vector<int>> &labels,
     merged_results.push_back(seg);
   }
 }
-bool CTCGreedyDecoder(const std::vector<int> &shape, const float *input,
+bool CTCGreedyDecoder(const std::vector<int> &shape, const float* input,
                       std::vector<std::vector<int>> &output,
                       std::vector<float> &logit) {
   int batch_size = shape[0];
@@ -134,8 +134,8 @@ bool CTCGreedyDecoder(const std::vector<int> &shape, const float *input,
 }
 
 std::vector<std::vector<std::vector<int>>> BoxesFromBitmap(
-    const cv::Mat pred, const cv::Mat bitmap, const float &box_thresh,
-    const float &unclip_ratio, int origin_w, int origin_h) {
+    const cv::Mat &pred, const cv::Mat &bitmap, const float &box_thresh,
+    const float &unclip_ratio, const int &origin_w, const int &origin_h) {
   const int max_candidates = 500;
   float min_size = 3.0;
 
@@ -161,7 +161,6 @@ std::vector<std::vector<std::vector<int>>> BoxesFromBitmap(
     float epsilon = static_cast<float>(0.001 * arcLength(contours[_i], true));
     cv::approxPolyDP(cv::Mat(contours[_i]), contours_poly, epsilon, true);
     float score;
-    float ssid;
     std::vector<std::vector<float>> box_array;
     for (int k = 0; k < contours_poly.size(); k++) {
       std::vector<float> tmp_box;
@@ -172,11 +171,9 @@ std::vector<std::vector<std::vector<int>>> BoxesFromBitmap(
 
     cv::RotatedRect box = cv::minAreaRect(contours_poly);
     // cv::RotatedRect box = cv::minAreaRect(contours[_i]);
-    auto filter_box = GetMiniBoxes(box, ssid, min_size);
+    auto filter_box = GetMiniBoxes(box, min_size);
     if (filter_box.size() == 0) continue;
-    // if (ssid < min_size) {
-    //  continue;
-    //}
+ 
     // auto box_for_unclip = array;
     // end get_mini_box
     score = BoxScoreFast(box_array, pred);
@@ -191,11 +188,8 @@ std::vector<std::vector<std::vector<int>>> BoxesFromBitmap(
     // end for unclip
 
     // cv::RotatedRect clipbox = points;
-    auto filter_unclip = GetMiniBoxes(unclip_box, ssid, min_size);
+    auto filter_unclip = GetMiniBoxes(unclip_box, min_size);
     if (filter_unclip.size() == 0) continue;
-
-    // if (ssid < min_size)
-    //  continue;
 
     // int dest_width = pred.cols;
     // int dest_height = pred.rows;
@@ -217,9 +211,8 @@ std::vector<std::vector<std::vector<int>>> BoxesFromBitmap(
   return boxes;
 }
 
-std::vector<std::vector<float>> GetMiniBoxes(cv::RotatedRect box, float &ssid,
-                                             float &min_size) {
-  ssid = std::max(box.size.width, box.size.height);
+std::vector<std::vector<float>> GetMiniBoxes(const cv::RotatedRect &box, const float &min_size) {
+  float ssid = std::max(box.size.width, box.size.height);
   if (ssid < min_size) {
     std::vector<std::vector<float>> mini_box;
     return mini_box;
@@ -255,7 +248,7 @@ std::vector<std::vector<float>> GetMiniBoxes(cv::RotatedRect box, float &ssid,
   return array;
 }
 
-cv::RotatedRect UnClip(std::vector<std::vector<float>> box,
+cv::RotatedRect UnClip(const std::vector<std::vector<float>> &box,
                        const float &unclip_ratio) {
   float distance = 1.0;
 
@@ -288,7 +281,7 @@ cv::RotatedRect UnClip(std::vector<std::vector<float>> box,
 }
 
 void GetContourArea(const std::vector<std::vector<float>> &box,
-                    const float unclip_ratio, float &distance) {
+                    const float &unclip_ratio, float &distance) {
   int pts_num = 4;
   float area = 0.0f;
   float dist = 0.0f;
@@ -305,7 +298,7 @@ void GetContourArea(const std::vector<std::vector<float>> &box,
   distance = area * unclip_ratio / dist;
 }
 
-std::vector<std::vector<float>> Mat2Vector(const cv::Mat mat) {
+std::vector<std::vector<float>> Mat2Vector(const cv::Mat &mat) {
   std::vector<std::vector<float>> img_vec;
   std::vector<float> tmp;
 
@@ -319,12 +312,12 @@ std::vector<std::vector<float>> Mat2Vector(const cv::Mat mat) {
   return img_vec;
 }
 
-bool XsortFp32(const std::vector<float> a, const std::vector<float> b) {
+bool XsortFp32(const std::vector<float> &a, const std::vector<float> &b) {
   if (a[0] != b[0]) return a[0] < b[0];
   return false;
 }
 
-bool XsortInt(const std::vector<int> a, const std::vector<int> b) {
+bool XsortInt(const std::vector<int> &a, const std::vector<int> &b) {
   if (a[0] != b[0]) return a[0] < b[0];
   return false;
 }

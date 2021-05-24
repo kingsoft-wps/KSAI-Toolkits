@@ -24,27 +24,27 @@ limitations under the License.
 
 namespace KSAIOCRUtility {
   bool CreateDict(const std::string &dict_path, std::map<int, std::string> &char_dict);
-  void MergeHorizontal(VOCRectf &rects, std::vector<std::vector<int>> &labels,
-                       std::vector<std::string> &results,
+  void MergeHorizontal(const VOCRectf &rects, const std::vector<std::vector<int>> &labels,
+                       const std::vector<std::string> &results,
                        std::vector<std::vector<int>> &duanluo_results_labels,
                        std::vector<std::string> &merged_results);
-  bool CTCGreedyDecoder(const std::vector<int> &shape, const float *input,
+  bool CTCGreedyDecoder(const std::vector<int> &shape, const float* input,
                         std::vector<std::vector<int>> &output,
                         std::vector<float> &logit);
   float BoxScoreFast(const std::vector<std::vector<float>> &box_array, const cv::Mat &pred);
-  std::vector<std::vector<float>> GetMiniBoxes(cv::RotatedRect box,float& ssid, float& min_size);
+  std::vector<std::vector<float>> GetMiniBoxes(const cv::RotatedRect &box, const float &min_size);
   std::vector<std::vector<std::vector<int>>> BoxesFromBitmap(
-      const cv::Mat pred, const cv::Mat bitmap, const float &box_thresh, 
-      const float &det_db_unclip_ratio, int dest_width, int dest_height);
-  cv::RotatedRect UnClip(std::vector<std::vector<float>> box, const float &unclip_ratio);
+      const cv::Mat &pred, const cv::Mat &bitmap, const float &box_thresh, 
+      const float &det_db_unclip_ratio, const int &dest_width, const int &dest_height);
+  cv::RotatedRect UnClip(const std::vector<std::vector<float>> &box, const float &unclip_ratio);
   void GetContourArea(const std::vector<std::vector<float>> &box,
-                      const float unclip_ratio, float &distance);
-  static bool XsortInt(const std::vector<int> a, const std::vector<int> b);
-  static bool XsortFp32(const std::vector<float> a, const std::vector<float> b);
-  std::vector<std::vector<float>> Mat2Vector(const cv::Mat mat);
+                      const float &unclip_ratio, float &distance);
+  static bool XsortInt(const std::vector<int> &a, const std::vector<int> &b);
+  static bool XsortFp32(const std::vector<float> &a, const std::vector<float> &b);
+  std::vector<std::vector<float>> Mat2Vector(const cv::Mat &mat);
   void GetWarpImgs(const cv::Mat &img, const VOCRectf &rects, std::vector<cv::Mat> &warp_imgs);
 
-  template <class T> inline T Clamp(T x, T min, T max) {
+  template <class T> inline T Clamp(const T &x, const T &min, const T &max) {
     if (x > max)
       return max;
     if (x < min)
@@ -52,7 +52,7 @@ namespace KSAIOCRUtility {
     return x;
   }
 
-  inline float Clampf(float x, float min, float max) {
+  inline float Clampf(const float &x, const float &min, const float &max) {
     if (x > max)
       return max;
     if (x < min)

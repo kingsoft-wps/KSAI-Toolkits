@@ -116,8 +116,8 @@ int KSAIInferenceBase::AllocateInputTensor(const std::vector<unsigned char*> &in
   return 1;
 }
 
-void KSAIInferenceBase::GetOutputTensor(const int &output_index, TfLiteTensor *&out_tensor,
-                                        TfLiteIntArray *&out_tensor_shape) {
+void KSAIInferenceBase::GetOutputTensor(const int &output_index, TfLiteTensor* &out_tensor,
+                                        TfLiteIntArray* &out_tensor_shape) {
   const TfLiteTensor* output_tensor =
       TfLiteInterpreterGetOutputTensor(interpreter_, output_index);
   out_tensor = const_cast<TfLiteTensor *>(output_tensor);

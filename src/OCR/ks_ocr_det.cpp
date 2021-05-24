@@ -21,7 +21,7 @@ limitations under the License.
 #include "ks_ocr_utility.h"
 #define SAT(a, b, c) (b > a ? (b < c ? b : c) : a)
 
-bool KSAIOCRDetector::Process(const cv::Mat& img, VOCRectf& rects) {
+bool KSAIOCRDetector::Process(const cv::Mat &img, VOCRectf &rects) {
   int origin_w = img.size().width;
   int origin_h = img.size().height;
   cv::Mat img_out;
