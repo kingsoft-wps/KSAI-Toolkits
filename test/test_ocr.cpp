@@ -22,9 +22,6 @@ limitations under the License.
 #include "ks_ocr.h"
 
 int main(int argc, char* argv[]) {
-#ifdef _WIN32
-  system("chcp 65001");
-#endif
   if (argc != 6) {
     fprintf(stderr,
             "KSAI_ToolKits_OCR <detect model path> <cls model path> <recog "
@@ -87,7 +84,14 @@ int main(int argc, char* argv[]) {
              cv::Point(results.boxes[i].points_[0].x_,
                        results.boxes[i].points_[0].y_),
              cv::Scalar(rand() % 255, rand() % 255, rand() % 255), 5);
+#ifdef _WIN32
+		UINT oldCP = GetConsoleOutputCP();
+		SetConsoleOutputCP(CP_UTF8);
+		std::cout << results.char_results[i] << std::endl;
+		SetConsoleOutputCP(oldCP);
+#else
         std::cout << results.char_results[i].c_str() << std::endl;
+#endif
       }
       // show the result image
       cv::imshow("res_img", draw_img);
