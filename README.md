@@ -19,7 +19,7 @@ The CMake version: 3.16+
 * Windows: Visual Studio 2019
 #### 2. Clone this repository
 ```
-git clone git@ksogit.kingsoft.net:zhai/KSAI-Toolkits.git
+git clone https://github.com/kingsoft-wps/KSAI-Toolkits.git
 ``` 
 
 #### 3. Setup 3rd party libraries
