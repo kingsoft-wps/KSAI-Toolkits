@@ -50,6 +50,10 @@ build_windows.bat
 ```
 ./build_aarch64.sh
 ``` 
+* build script on mips64 is build_mips64.sh
+```
+./build_mips64.sh
+``` 
 
 #### 6.  Run the test program
 

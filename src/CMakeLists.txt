@@ -42,7 +42,14 @@ elseif(BUILD_TARGET_WINDOWS)
 elseif(BUILD_TARGET_ARM)
   set(LINK_LIB_LIST
     ${PROJECT_SOURCE_PATH}/3rdparty/libs/aarch64/opencv/libopencv_world.so
-    ${PROJECT_SOURCE_PATH}/3rdparty/libs/aarch64/tflite/libtensorflow-lite.a
+    ${PROJECT_SOURCE_PATH}/3rdparty/libs/aarch64/ksai-lite/libtensorflow-lite.so
+    dl
+)
+elseif(BUILD_TARGET_MIPS)
+  set(LINK_LIB_LIST
+    ${PROJECT_SOURCE_PATH}/3rdparty/libs/mips64/opencv/libopencv_world.so
+    ${PROJECT_SOURCE_PATH}/3rdparty/libs/mips64/ksai-lite/libtensorflow-lite.so
+    dl
   )
 else() # default is linux
   set(LINK_LIB_LIST

@@ -27,7 +27,15 @@ elseif(BUILD_TARGET_WINDOWS)
   )
 elseif(BUILD_TARGET_ARM)
   set(LINK_LIB_LIST
-    ${PROJECT_SOURCE_PATH}/3rdparty/libs/aarch64/others/libz.so.1
+    ${PROJECT_SOURCE_PATH}/3rdparty/libs/aarch64/others/libz.so.1  
+    ${PROJECT_SOURCE_PATH}/3rdparty/libs/aarch64/opencv/libopencv_world.so
+    ${PROJECT_SOURCE_PATH}/3rdparty/libs/aarch64/ksai-lite/libtensorflow-lite.so
+    ${LIBRARY_OUTPUT_PATH}/libKSAI-Toolkits.so
+  )
+elseif(BUILD_TARGET_MIPS)
+  set(LINK_LIB_LIST
+    ${PROJECT_SOURCE_PATH}/3rdparty/libs/mips64/opencv/libopencv_world.so
+    ${PROJECT_SOURCE_PATH}/3rdparty/libs/mips64/ksai-lite/libtensorflow-lite.so
     ${LIBRARY_OUTPUT_PATH}/libKSAI-Toolkits.so
   )
 else() # default is linux
