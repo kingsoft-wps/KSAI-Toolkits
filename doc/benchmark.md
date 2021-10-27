@@ -2,17 +2,17 @@
 本文基于KSAI-Lite推理框架给出了开源, OCR及NLP系列模型精度指标和在各平台采用不同加速方法预测耗时的benchmark。
 ## 模型
 ### 开源模型
-* [MobilieNet V2](http://sdk.ai.wpscdn.cn/KSAI/OpenSource/models/MobileNet_V2/MobileNet_V2.zip)
+* [MobilieNet V2](https://sdk.ai.wpscdn.cn/KSAI/OpenSource/models/MobileNet_V2/MobileNet_V2.zip)
 
 包含了浮点模型以及定点量化模型
 ### 自研模型
 #### CV模型
-* [Mobile OCR文本检测](http://sdk.ai.wpscdn.cn/KSAI/OpenSource/models/CV/mobilenet_east.tflite)
-* [Mobile OCR文字识别](http://sdk.ai.wpscdn.cn/KSAI/OpenSource/models/CV/line_recog_MINICNN_CN.tflite)
-* [边缘检测模型](http://sdk.ai.wpscdn.cn/KSAI/OpenSource/models/CV/rect_detection.tflite)
-* [图片分类模型](http://sdk.ai.wpscdn.cn/KSAI/OpenSource/models/CV/doc_image_cf.20180907_11.2.4.tflite)
+* [Mobile OCR文本检测](https://sdk.ai.wpscdn.cn/KSAI/OpenSource/models/CV/mobilenet_east.tflite)
+* [Mobile OCR文字识别](https://sdk.ai.wpscdn.cn/KSAI/OpenSource/models/CV/line_recog_MINICNN_CN.tflite)
+* [边缘检测模型](https://sdk.ai.wpscdn.cn/KSAI/OpenSource/models/CV/rect_detection.tflite)
+* [图片分类模型](https://sdk.ai.wpscdn.cn/KSAI/OpenSource/models/CV/doc_image_cf.20180907_11.2.4.tflite)
 #### NLP模型
-* [textcnn模型](http://sdk.ai.wpscdn.cn/KSAI/OpenSource/models/NLP/textcnn_7_dc9595852c652f6b3b3be3c0123d3624.zip)
+* [textcnn模型](https://sdk.ai.wpscdn.cn/KSAI/OpenSource/models/NLP/textcnn_7_dc9595852c652f6b3b3be3c0123d3624.zip)
 ## 平台描述
 ### 国产化平台：
 #### 华为 Kunpeng 920：
@@ -105,5 +105,5 @@ xnnpack是google推出的针对CPU实现高度优化的浮点运算，针对移�
 
 ### 总体性能统计
 ## OCR数据集
-* 图像数据(IP : http://sdk.ai.wpscdn.cn/KSAI/OCR_data/input/image.zip)
-* label信息(IP : http://sdk.ai.wpscdn.cn/KSAI/OCR_data/input/golden/annotation_jsonfile.zip)
+* 图像数据(IP : https://sdk.ai.wpscdn.cn/KSAI/OCR_data/input/image.zip)
+* label信息(IP : https://sdk.ai.wpscdn.cn/KSAI/OCR_data/input/golden/annotation_jsonfile.zip)
