@@ -59,7 +59,7 @@ build_windows.bat
 
 Once the compilation is sucessfully finished, look for the executable file KSAI_Toolkits_demo in /output/$platform$/bin/ folder. You can execute it with the following command line paremeters:
 ```
-./output/linux/bin/KSAI_Toolkits_demo data/OCR/model/db_171_varied.tflite data/OCR/model/cls_best.tflite data/OCR/model/mv3_345000.tflite data/OCR/dictionary/char_6599.txt data/OCR/input/test.jpg
+./output/linux/bin/KSAI_Toolkits_demo data/OCR/model/ks_ocr_det_infer_v1.tflite data/OCR/model/ks_ocr_cls_infer_v1.tflite data/OCR/model/ks_ocr_recog_infer_v1.tflite data/OCR/dictionary/char_6599.txt data/OCR/input/test.jpg
 ```
 The output of the program should be:
 ```
