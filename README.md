@@ -54,6 +54,12 @@ build_windows.bat
 ```
 ./build_mips64.sh
 ``` 
+* build script on loongarch64 is build_loong.sh
+
+*Note: Loongarch64 only supports local compiling now*
+```
+./build_loongarch64.sh
+``` 
 
 #### 6.  Run the test program
 

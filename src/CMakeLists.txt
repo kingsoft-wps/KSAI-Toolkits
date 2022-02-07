@@ -51,6 +51,11 @@ elseif(BUILD_TARGET_MIPS)
     ${PROJECT_SOURCE_PATH}/3rdparty/libs/mips64/ksai-lite/libtensorflow-lite.so
     dl
   )
+elseif(BUILD_TARGET_LOONGARCH64) 
+  set(LINK_LIB_LIST
+    ${PROJECT_SOURCE_PATH}/3rdparty/libs/loongarch64/opencv/libopencv_world.so
+    ${PROJECT_SOURCE_PATH}/3rdparty/libs/loongarch64/ksai-lite/libksai-lite.so
+  )
 else() # default is linux
   set(LINK_LIB_LIST
     ${PROJECT_SOURCE_PATH}/3rdparty/libs/linux_x86_64/opencv/libopencv_world.so

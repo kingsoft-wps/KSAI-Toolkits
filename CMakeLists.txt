@@ -22,6 +22,7 @@ option(BUILD_TARGET_LINUX "Set the build target is Linux" OFF)
 option(BUILD_TARGET_WINDOWS "Set the build target is Windows" OFF)
 option(BUILD_TARGET_ARM "Set the build target is Arm" OFF)
 option(BUILD_TARGET_MIPS "Set the build target is MIPS" OFF)
+option(BUILD_TARGET_LOONGARCH64 "Set the build target is LOONGS" OFF)
 add_compile_options(-std=c++11)
 
 option(WITH_OCR "enable OCR module" ON)
